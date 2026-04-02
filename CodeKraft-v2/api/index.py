@@ -256,16 +256,17 @@ async def health():
         "service": "codekraft-api",
         "version": "2.0.0",
         "architecture": "4-layer pipeline",
-        "layers": [
+                "layers": [
             "L1: Static Analyzer (AST, < 5ms)",
             "L2: CodeBERT Classifier (HF API, ~250ms)",
             "L3: Rule Engine (pre-computed, < 1ms)",
-            "L4: LLM Enricher (GPT, ~800ms, async optional)",
+            "L4: LLM Enricher (Groq/Llama3, ~800ms, async optional)",
         ],
         "hf_model": os.getenv("HF_MODEL", "microsoft/codebert-base"),
-        "openai_model": os.getenv("OPENAI_MODEL", "gpt-3.5-turbo"),
+        "groq_model": os.getenv("GROQ_MODEL", "llama3-70b-8192"),
         "hf_configured": bool(os.getenv("HF_API_KEY")),
-        "openai_configured": bool(os.getenv("OPENAI_API_KEY")),
+        "groq_configured": bool(os.getenv("GROQ_API_KEY")),
+
     }
 
 
